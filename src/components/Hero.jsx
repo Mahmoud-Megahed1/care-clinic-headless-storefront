@@ -17,23 +17,20 @@ const Hero = () => {
 
       <div className="container hero-content">
         <div>
-          <p className="luxury-text mb-4 animate-fade" style={{animationDelay: '0.2s'}}>
-            Advanced Dermatological Science
+          <p className="luxury-text mb-6 animate-fade" style={{animationDelay: '0.2s'}}>
+            DNA PLUS CARE • EST. 2026
           </p>
           <h1 className="hero-title animate-fade" style={{animationDelay: '0.4s'}}>
-            The Future of <br />
-            <span>Skin Care</span>
+            Clinically Engineered. <br />
+            <span>Visible Results.</span>
           </h1>
           <p className="hero-subtitle animate-fade" style={{animationDelay: '0.6s'}}>
-            Precision-engineered formulas rooted in DNA analysis to unlock your skin's true potential. Experience the luxury of medical excellence.
+            Unlock the science of genetic skincare. Precision formulas designed for cellular restoration and timeless skin health.
           </p>
           
           <div className="hero-actions animate-fade" style={{animationDelay: '0.8s'}}>
-            <a href="/shop" className="btn btn-hero-primary group">
-              Shop Collection <ArrowRight size={18} />
-            </a>
-            <a href="/science" className="btn btn-hero-outline">
-              Our Science
+            <a href="/shop" className="btn btn-hero-primary">
+              Discover the Collection
             </a>
           </div>
         </div>

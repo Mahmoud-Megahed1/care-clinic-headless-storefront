@@ -1,23 +1,45 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap');
 
 :root {
-  --font-body: 'Inter', sans-serif;
-  --font-heading: 'Playfair Display', serif;
-  --font-accent: 'Outfit', sans-serif;
+  /* Typography Hybrid System */
+  --font-ui: 'Outfit', sans-serif;
+  --font-elevation: 'Newsreader', serif;
 
+  /* Type Scale (Strict Hierarchy) */
+  --text-h1: 4.5rem;
+  --text-h2: 2.5rem;
+  --text-h3: 1.5rem;
+  --text-body: 1rem;
+  --text-caption: 0.875rem;
+
+  --lh-heading: 1.1;
+  --lh-body: 1.6;
+
+  --ls-heading: -0.02em;
+  --ls-body: 0.01em;
+  --ls-caption: 0.05em;
+
+  /* Luxury Palette */
   --color-white: #ffffff;
+  --color-off-white: #fafaf9; /* Warm luxury white */
   --color-black: #000000;
-  --color-gold: #c5a059;
+  --color-deep-black: #121212; /* Matte black */
+  --color-champagne: #f3ece0;
   --color-silver: #a8a8a8;
-  --color-dark-gray: #1a1a1a;
-  --color-light-gray: #f5f5f5;
-  --color-medical: #004b87;
 
-  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Strict Spacing System (8px grid) */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-xxl: 80px;
+
+  /* Motion Tiers (The Luxury Rhythm) */
+  --ease-luxury: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-micro: 150ms;
+  --duration-standard: 300ms;
+  --duration-cinematic: 500ms;
 }
 
 * {
@@ -27,48 +49,60 @@
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-white);
+  font-family: var(--font-ui);
+  background-color: var(--color-off-white);
   color: var(--color-black);
-  line-height: 1.6;
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
+/* Elevation Typography (Used only when meaning needs elevation) */
+.elevation-serif {
+  font-family: var(--font-elevation);
   font-weight: 400;
-  letter-spacing: -0.02em;
+  line-height: var(--lh-heading);
+  letter-spacing: -0.01em; /* Tighter tracking for serif */
 }
 
-.luxury-text {
-  font-family: var(--font-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--color-gold);
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
 }
 
+/* View Transitions API (Global Immersion) */
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: var(--duration-standard);
+  animation-timing-function: var(--ease-luxury);
+}
+
+/* Layout Utilities (Logical Properties Ready for RTL/LTR) */
 .container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  margin-inline: auto; /* Logical property */
+  padding-inline: 2rem; /* Logical property */
 }
 
 section {
-  padding: 6rem 0;
+  padding-block: var(--space-xxl); /* Logical property */
 }
 
+/* UI Chrome (Buttons, Labels) */
 .btn {
-  display: inline-block;
-  padding: 1rem 2.5rem;
-  text-decoration: none;
-  font-family: var(--font-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 2.5rem;
+  padding-block: 1rem;
+  font-family: var(--font-ui);
   font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  transition: var(--transition-smooth);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: all var(--duration-micro) var(--ease-luxury);
   cursor: pointer;
   border: none;
 }
@@ -79,8 +113,8 @@ section {
 }
 
 .btn-primary:hover {
-  background-color: var(--color-gold);
-  transform: translateY(-2px);
+  background-color: var(--color-deep-black);
+  transform: translateY(-1px);
 }
 
 .btn-outline {
@@ -100,14 +134,4 @@ section {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade {
-  animation: fadeIn 1s ease-out forwards;
 }

@@ -1,0 +1,20 @@
+.env-section {
+  /* Using cinematic duration for slow, luxurious mood shifts as the user scrolls */
+  transition: background-color var(--duration-cinematic) var(--ease-luxury), 
+              color var(--duration-cinematic) var(--ease-luxury);
+}
+
+.env-light {
+  background-color: var(--color-off-white);
+  color: var(--color-black);
+}
+
+.env-dark {
+  background-color: var(--color-deep-black);
+  color: var(--color-white);
+}
+
+.env-champagne {
+  background-color: var(--color-champagne);
+  color: var(--color-deep-black);
+}

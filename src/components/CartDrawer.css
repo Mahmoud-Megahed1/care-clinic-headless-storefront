@@ -1,0 +1,194 @@
+.cart-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-standard) var(--ease-luxury);
+}
+
+.cart-backdrop.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  /* Logical property for right side in LTR, left side in RTL */
+  inset-inline-end: 0; 
+  width: 100%;
+  max-width: 450px;
+  background-color: var(--color-white);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  /* Start off-screen */
+  transform: translateX(100%);
+  transition: transform var(--duration-cinematic) var(--ease-luxury);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+/* In RTL, transform logic flips. We handle it by relying on the fact that inset-inline-end naturally flips it, but physical translateX(100%) moves it right. 
+   To make it universally safe with physical transforms, we can use logical transforms in modern CSS, but fallback is fine. */
+html[dir="rtl"] .cart-drawer {
+  transform: translateX(-100%);
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.cart-drawer.open {
+  transform: translateX(0) !important;
+}
+
+.cart-header {
+  padding: var(--space-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.cart-header h2 {
+  font-size: var(--text-h3);
+}
+
+.cart-close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-silver);
+  transition: color var(--duration-micro) var(--ease-luxury);
+}
+
+.cart-close-btn:hover {
+  color: var(--color-deep-black);
+}
+
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-xl);
+}
+
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.mt-4 { margin-top: var(--space-md); }
+
+.cart-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.cart-item {
+  display: flex;
+  gap: var(--space-md);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.cart-item-image {
+  width: 90px;
+  height: 110px;
+  background-color: var(--color-champagne);
+  flex-shrink: 0;
+}
+
+.cart-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cart-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cart-item-top h4 {
+  font-size: 1.1rem;
+}
+
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: var(--color-silver);
+  cursor: pointer;
+  padding: 0;
+}
+
+.cart-item-remove:hover {
+  color: var(--color-deep-black);
+}
+
+.cart-item-type {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-silver);
+  margin-top: 4px;
+}
+
+.cart-item-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+}
+
+.cart-item-qty {
+  font-family: var(--font-ui);
+  font-size: var(--text-caption);
+  color: var(--color-silver);
+}
+
+.cart-item-price {
+  font-family: var(--font-ui);
+  font-weight: 500;
+}
+
+.cart-footer {
+  padding: var(--space-xl);
+  background-color: var(--color-off-white);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.cart-subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+  font-size: 1.25rem;
+}
+
+.cart-shipping-note {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--color-silver);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+}
+
+.cart-checkout-btn {
+  width: 100%;
+  padding-block: 1.25rem;
+}

@@ -1,0 +1,83 @@
+.warm-handoff-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-black);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-cinematic) var(--ease-luxury);
+}
+
+.warm-handoff-overlay.entering,
+.warm-handoff-overlay.holding {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.warm-handoff-overlay.exiting {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.handoff-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.handoff-logo {
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-xl);
+}
+
+.handoff-logo span {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  color: var(--color-silver);
+  margin-inline-start: 0.25rem;
+}
+
+.handoff-line-container {
+  width: 200px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.handoff-progress-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-silver);
+  transform: translateX(-100%);
+  animation: progressLine 2.5s var(--ease-luxury) forwards;
+}
+
+.handoff-text {
+  font-family: var(--font-ui);
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-silver);
+  animation: pulseText var(--duration-cinematic) var(--ease-luxury) infinite alternate;
+}
+
+@keyframes progressLine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes pulseText {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}

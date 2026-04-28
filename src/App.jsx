@@ -1,27 +1,42 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Marquee from './components/Marquee';
+import RoutineBuilder from './components/RoutineBuilder';
+import ProductPage from './components/ProductPage';
+import { CartProvider } from './context/CartContext';
+import CartDrawer from './components/CartDrawer';
 import './index.css';
 import './App.css';
 
 function App() {
+  const isProductPage = typeof window !== 'undefined' && window.location.search.includes('page=product');
+
+  if (isProductPage) {
+    return (
+      <CartProvider>
+        <ProductPage />
+        <CartDrawer />
+      </CartProvider>
+    );
+  }
+
   return (
-    <div className="app-wrapper">
+    <CartProvider>
+      <div className="app-wrapper">
       <Navbar />
       <Hero />
-      <Marquee text="PREMIUM DERMATOLOGY • CLINICALLY PROVEN • ADVANCED CELLULAR RESTORATION" dark={true} />
+      <Marquee text="DERMATOLOGIST APPROVED • CLINICALLY TESTED • MEDICAL GRADE • DNA OPTIMIZED • ADVANCED MOLECULAR SCIENCE" dark={true} />
 
-      {/* Brand Narrative Section */}
-      <section className="section-white">
+      {/* Brand Narrative Section - using light theme */}
+      <Section theme="light">
         <div className="container grid-2-cols">
           <div className="animate-fade">
-            <p className="luxury-text mb-4">The DNA Ethos</p>
-            <h2 className="text-5xl mb-8">Where Science Meets <br /><span className="italic" style={{fontWeight: 300}}>Sublime Luxury</span></h2>
-            <p className="text-lg mb-6" style={{color: 'var(--color-dark-gray)'}}>
+            <p className="subtitle-text mb-4">The DNA Ethos</p>
+            <h2 className="elevation-serif main-heading mb-8">Where Science Meets <br /><span style={{fontWeight: 400, fontStyle: 'italic'}}>Sublime Luxury</span></h2>
+            <p className="body-text mb-6">
               DNA PLUS CARE isn't just another skincare brand. We are a medical-first dermatological house dedicated to the art of precision. Our formulations are built on the intersection of genetic insights and advanced molecular science.
             </p>
-            <p className="text-lg mb-10" style={{color: 'var(--color-dark-gray)'}}>
+            <p className="body-text mb-10">
               Every drop is a testament to our commitment to skin health, designed to provide transformative results for the most discerning clients.
             </p>
             <a href="/about" className="btn btn-outline">Discover our Story</a>
@@ -36,44 +51,45 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* Services/Product Lines Preview */}
-      <section className="section-light">
+      {/* Services/Product Lines Preview - using champagne theme */}
+      <Section theme="champagne">
         <div className="container">
           <div className="text-center mb-16">
-            <p className="luxury-text mb-4">Curated Solutions</p>
-            <h2 className="text-5xl">Our Product Lines</h2>
+            <p className="subtitle-text mb-4">Curated Solutions</p>
+            <h2 className="elevation-serif main-heading">Our Product Lines</h2>
           </div>
           
           <div className="grid-3-cols">
             {['Ectoheal', 'Sebufree', 'Silky'].map((line) => {
-              const imageSrc = line === 'Ectoheal' ? '/ectoheal.png' : line === 'Sebufree' ? '/sebufree.png' : null;
+              const imageSrc = `/${line.toLowerCase()}.png`;
               
               return (
                 <div key={line} className="product-card">
                   <div className="product-image-wrapper">
-                    {imageSrc ? (
-                      <img src={imageSrc} alt={`${line} Product`} className="product-image" />
-                    ) : (
-                      <span className="product-placeholder">{line[0]}</span>
-                    )}
+                    <img src={imageSrc} alt={`${line} Product`} className="product-image" />
                   </div>
-                  <h3 className="product-title">{line}</h3>
+                  <h3 className="elevation-serif product-title">{line}</h3>
                   <p className="product-desc">Professional grade formulas designed for deep cellular restoration and balance.</p>
-                  <button className="product-link">Explore Collection</button>
+                  <a href="/?page=product" className="product-link btn btn-outline" style={{textDecoration: 'none', display: 'inline-block'}}>Explore Collection</a>
                 </div>
               );
             })}
           </div>
         </div>
-      </section>
+      </Section>
+
+      {/* The Routine Builder (Decision Engine) - using dark theme for focus */}
+      <Section theme="dark">
+        <RoutineBuilder />
+      </Section>
 
       {/* Footer */}
       <footer className="footer">
         <div className="container grid-4-cols">
           <div className="footer-col-main">
-            <a href="/" className="footer-logo">
+            <a href="/" className="footer-logo elevation-serif" dir="ltr">
               DNA<span>PLUS</span>CARE
             </a>
             <p className="footer-desc">
@@ -87,7 +103,7 @@ function App() {
           </div>
           
           <div>
-            <h4 className="luxury-text footer-heading mb-8">Collections</h4>
+            <h4 className="subtitle-text footer-heading mb-8">Collections</h4>
             <ul className="footer-links">
               <li><a href="#">Ectoheal</a></li>
               <li><a href="#">Sebufree</a></li>
@@ -97,7 +113,7 @@ function App() {
           </div>
           
           <div>
-            <h4 className="luxury-text footer-heading mb-8">Company</h4>
+            <h4 className="subtitle-text footer-heading mb-8">Company</h4>
             <ul className="footer-links">
               <li><a href="#">About Us</a></li>
               <li><a href="#">Our Science</a></li>
@@ -115,7 +131,9 @@ function App() {
         </div>
       </footer>
     </div>
-  );
+    <CartDrawer />
+  </CartProvider>
+);
 }
 
 export default App;

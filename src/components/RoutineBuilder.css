@@ -1,0 +1,145 @@
+.routine-builder-container {
+  max-width: 800px;
+  margin-inline: auto; /* Logical property */
+  text-align: center;
+  padding-block: var(--space-xl); /* Logical property */
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rb-title {
+  font-size: var(--text-h2);
+  margin-bottom: var(--space-sm);
+}
+
+.rb-desc {
+  font-family: var(--font-ui);
+  font-size: var(--text-body);
+  color: var(--color-silver);
+  margin-bottom: var(--space-lg);
+}
+
+.rb-step-indicator {
+  font-family: var(--font-ui);
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caption);
+  color: var(--color-silver);
+  margin-bottom: var(--space-md);
+}
+
+.rb-question {
+  font-size: var(--text-h3);
+  margin-bottom: var(--space-xl);
+}
+
+.rb-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 400px;
+  margin-inline: auto; /* Logical property */
+}
+
+.rb-option-btn {
+  width: 100%;
+}
+
+.rb-analyzing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.rb-spinner {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-champagne);
+  border-top-color: var(--color-deep-black);
+  border-radius: 50%;
+  animation: spin 1.5s var(--ease-luxury) infinite; /* Luxury Easing for spin */
+  margin-bottom: var(--space-md);
+}
+
+.rb-analyzing-text {
+  font-size: var(--text-h3);
+}
+
+.rb-analyzing-subtext {
+  font-family: var(--font-ui);
+  font-size: var(--text-caption);
+  color: var(--color-silver);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caption);
+}
+
+.rb-result-title {
+  font-size: var(--text-h2);
+  margin-bottom: var(--space-xl);
+}
+
+.rb-bundle-card {
+  background-color: var(--color-white);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-champagne);
+  text-align: start; /* Logical property (left in LTR, right in RTL) */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Soft luxury shadow */
+  transition: transform var(--duration-standard) var(--ease-luxury);
+}
+
+.rb-bundle-card:hover {
+  transform: translateY(-5px);
+}
+
+.rb-bundle-name {
+  font-size: var(--text-h3);
+  margin-bottom: var(--space-xs);
+  color: var(--color-deep-black);
+}
+
+.rb-bundle-desc {
+  font-family: var(--font-ui);
+  font-size: var(--text-body);
+  color: var(--color-silver);
+  margin-bottom: var(--space-md);
+  line-height: var(--lh-body);
+}
+
+.rb-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.rb-product-tag {
+  font-family: var(--font-ui);
+  font-size: var(--text-caption);
+  background-color: var(--color-off-white);
+  color: var(--color-deep-black);
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-champagne);
+}
+
+.rb-checkout-btn {
+  width: 100%;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Reusable animation from global, ensuring it works well inside this component */
+.animate-fade {
+  animation: fadeIn var(--duration-cinematic) var(--ease-luxury) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

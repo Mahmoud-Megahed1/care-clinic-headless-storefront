@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ShoppingBag, Search, Menu, X, Globe } from 'lucide-react';
+import { useCart } from '../context/CartContext';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [lang, setLang] = useState('EN');
+  const { toggleCart, cartItems } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +16,13 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleLanguage = () => {
+    const newLang = lang === 'EN' ? 'AR' : 'EN';
+    setLang(newLang);
+    document.documentElement.dir = newLang === 'AR' ? 'rtl' : 'ltr';
+    // Optionally change font-family here or rely on CSS logical properties
+  };
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : 'transparent'}`}>
@@ -27,31 +37,33 @@ const Navbar = () => {
 
         {/* Logo */}
         <div className="navbar-logo-wrapper">
-          <a href="/" className="navbar-logo">
+          <a href="/" className="navbar-logo" dir="ltr">
             DNA<span>PLUS</span>CARE
           </a>
         </div>
 
         {/* Desktop Navigation */}
         <ul className="navbar-links">
-          <li><a href="/shop" className="luxury-text">Shop</a></li>
-          <li><a href="/science" className="luxury-text">Our Science</a></li>
-          <li><a href="/concerns" className="luxury-text">Skin Concerns</a></li>
-          <li><a href="/about" className="luxury-text">About Us</a></li>
+          <li><a href="/shop">Shop</a></li>
+          <li><a href="/science">Our Science</a></li>
+          <li><a href="/concerns">Skin Concerns</a></li>
+          <li><a href="/about">About Us</a></li>
         </ul>
 
         {/* Icons */}
         <div className="navbar-actions">
-          <div className="navbar-lang luxury-text">
+          <div className="navbar-lang" onClick={toggleLanguage}>
             <Globe size={14} />
-            <span>EN / SAR</span>
+            <span>{lang} / SAR</span>
           </div>
           <button className="navbar-icon-btn">
             <Search size={20} />
           </button>
-          <button className="navbar-icon-btn">
+          <button className="navbar-icon-btn" onClick={toggleCart}>
             <ShoppingBag size={20} />
-            <span className="cart-badge">0</span>
+            {cartItems.length > 0 && (
+              <span className="cart-badge">{cartItems.length}</span>
+            )}
           </button>
         </div>
       </div>
@@ -69,9 +81,9 @@ const Navbar = () => {
           <a href="/science" onClick={() => setIsMobileMenuOpen(false)}>Our Science</a>
           <a href="/concerns" onClick={() => setIsMobileMenuOpen(false)}>Skin Concerns</a>
           <a href="/about" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
-          <div className="navbar-lang luxury-text" style={{display: 'flex', marginTop: '2rem'}}>
+          <div className="navbar-lang" style={{display: 'flex', marginTop: '2rem'}} onClick={toggleLanguage}>
             <Globe size={18} />
-            <span>EN / SAR</span>
+            <span>{lang} / SAR</span>
           </div>
         </div>
       )}
