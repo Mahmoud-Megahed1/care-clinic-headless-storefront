@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Marquee from './components/Marquee';
+import Section from './components/Section';
 import RoutineBuilder from './components/RoutineBuilder';
 import ProductPage from './components/ProductPage';
 import { CartProvider } from './context/CartContext';
