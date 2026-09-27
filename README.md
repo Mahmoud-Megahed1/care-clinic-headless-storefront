@@ -1,16 +1,35 @@
-# React + Vite
+# 🏥 Care Clinic — Headless Shopify Storefront
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, high-performance headless e-commerce storefront designed for clinics, medical wellness products, and healthcare services. Built with **React 19**, **Vite**, **Tailwind CSS**, and powered by the **Shopify Storefront API**.
 
-Currently, two official plugins are available:
+## ✨ Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **🛍️ Headless Shopify Integration**: Direct communication with Shopify Storefront API for products, variants, and live inventory.
+- **🌐 Native RTL & Multi-language Support**: Complete right-to-left layout optimization for Arabic markets alongside English.
+- **🛒 Interactive Cart Drawer**: Slide-out cart with real-time price calculation and seamless checkout redirect.
+- **⚡ Ultra-fast Performance**: Bundled with Vite and modern React 19 architecture for sub-second page loads.
+- **📱 Responsive Mobile-first UX**: Tailored for smooth navigation on mobile, tablet, and desktop devices.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React 19, Vite
+- **Styling**: Tailwind CSS, Lucide Icons
+- **E-Commerce Engine**: Shopify Storefront API (@shopify/shopify-buy)
+- **Tooling**: ESLint, Node.js
 
-## Expanding the ESLint configuration
+## 🚀 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+`ash
+# Clone the repository
+git clone https://github.com/Mahmoud-Megahed1/care-clinic-headless-storefront.git
+cd care-clinic-headless-storefront
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+`
+
+## 📄 License
+This project is open-source and available under the MIT License.
