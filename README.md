@@ -1,23 +1,22 @@
-# 🏥 Care Clinic — Headless Shopify Storefront
+# Care Clinic — Headless Shopify Storefront
 
-A modern, high-performance headless e-commerce storefront designed for clinics, medical wellness products, and healthcare services. Built with **React 19**, **Vite**, **Tailwind CSS**, and powered by the **Shopify Storefront API**.
+A headless e-commerce storefront for healthcare and medical wellness products built with React 19, Vite, Tailwind CSS, and the Shopify Storefront API.
 
-## ✨ Key Features
+## Features
 
-- **🛍️ Headless Shopify Integration**: Direct communication with Shopify Storefront API for products, variants, and live inventory.
-- **🌐 Native RTL & Multi-language Support**: Complete right-to-left layout optimization for Arabic markets alongside English.
-- **🛒 Interactive Cart Drawer**: Slide-out cart with real-time price calculation and seamless checkout redirect.
-- **⚡ Ultra-fast Performance**: Bundled with Vite and modern React 19 architecture for sub-second page loads.
-- **📱 Responsive Mobile-first UX**: Tailored for smooth navigation on mobile, tablet, and desktop devices.
+- **Headless Shopify Integration**: Direct consumption of the Shopify Storefront API for products, variants, collections, and inventory.
+- **Right-to-Left (RTL) Localization**: Comprehensive layout and typography support for Arabic alongside English.
+- **Cart State Management**: Slide-out cart drawer with real-time price calculations and direct checkout handoff.
+- **Responsive Architecture**: Mobile-first interface designed for fast rendering across devices.
 
-## 🛠️ Tech Stack
+## Technology Stack
 
 - **Frontend**: React 19, Vite
 - **Styling**: Tailwind CSS, Lucide Icons
-- **E-Commerce Engine**: Shopify Storefront API (@shopify/shopify-buy)
+- **E-Commerce API**: Shopify Storefront API (@shopify/shopify-buy)
 - **Tooling**: ESLint, Node.js
 
-## 🚀 Getting Started
+## Getting Started
 
 `ash
 # Clone the repository
@@ -31,5 +30,6 @@ npm install
 npm run dev
 `
 
-## 📄 License
-This project is open-source and available under the MIT License.
+## License
+
+This repository is open-source under the MIT License.
